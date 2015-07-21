@@ -1,2 +1,2 @@
-Personal onfiguration files for various tools.
+Personal configuration files for various tools.
 

@@ -193,6 +193,15 @@ bindcode 235 exec --no-startup-id /home/dimos/bin/displayDetect.sh
 # Create a new workspace
 bindsym $mod+n exec --no-startup-id ~/.i3/i3-new-workspace.sh
 
+# Move window to next workspace
+bindsym Control+Mod1+Shift+Right "move workspace next; workspace next;"
+
+# Move window to previous workspace
+bindsym Control+Mod1+Shift+Left "move workspace prev; workspace prev;"
+
+# Move window to a new workspace
+bindsym $mod+Shift+n exec --no-startup-id /home/dimos/.i3/i3-move-to-new-workspace.sh
+
 # Lock + suspend shortcut
 bindsym $mod+Escape exec --no-startup-id ~/.i3/i3-suspend.sh
 
