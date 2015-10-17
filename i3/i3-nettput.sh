@@ -46,7 +46,7 @@ if [[ "${time_diff}" -gt 0 ]]; then
   # 1024^2 = 1048576
 
   # incoming
-  if [[ "$rx_mib" -gt 1048576 ]]; then
+  if [[ "$rx_diff" -gt 1048576 ]]; then
     rx_mib=$(( $rx_rate >> 20 ))
     echo -n "${rx_mib} M↓"
   else
@@ -57,7 +57,7 @@ if [[ "${time_diff}" -gt 0 ]]; then
   echo -n "  "
 
   # outgoing
-  if [[ "$tx_mib" -gt 1048576 ]]; then
+  if [[ "$tx_diff" -gt 1048576 ]]; then
     tx_mib=$(( $tx_rate >> 20 ))
     echo -n "${tx_mib} M↑"
   else
