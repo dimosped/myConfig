@@ -94,8 +94,6 @@ alias fanfull='echo level disengaged | sudo tee /proc/acpi/ibm/fan'
 alias fanoff='echo level 0 | sudo tee /proc/acpi/ibm/fan'
 alias lighton='echo 255 | sudo tee /sys/class/leds/tpacpi\:\:thinklight/brightness'
 alias lightoff='echo 0 | sudo tee /sys/class/leds/tpacpi\:\:thinklight/brightness'
-alias turbooff='echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo'
-alias turboon='echo 0 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo'
 
 alias oopen='xdg-open'
 

@@ -163,45 +163,32 @@ bar {
 #----------------------------------------------------------------------------------------------------------
 
 # Pulse Audio controls
-# Mod media keys
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +10%; pactl set-sink-volume 1 +10%" 
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -10%; pactl set-sink-volume 1 -10%"
-bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle; pactl set-sink-mute 1 toggle" 
-# Custom key shortcuts for keyboards without media keys
-bindsym Control+Shift+Up exec "pactl set-sink-volume 0 +10%; pactl set-sink-volume 1 +10%"
-bindsym Control+Shift+Down exec "pactl set-sink-volume 0 -10%; pactl set-sink-volume 1 -10%"
-bindsym Control+Shift+Right exec "pactl set-sink-mute 0 toggle; pactl set-sink-mute 1 toggle"
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume "alsa_output.pci-0000_00_1b.0.analog-stereo" -- '+10%' 
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume "alsa_output.pci-0000_00_1b.0.analog-stereo" -- '-10%' 
+bindsym XF86AudioMute exec pactl set-sink-mute "alsa_output.pci-0000_00_1b.0.analog-stereo" toggle
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # Lock screen shortcut
-bindsym Mod1+Control+l exec /home/dimos/.i3/i3-lock.sh
+bindsym Mod1+Control+l exec i3lock -c 000000
 
 # Execute i3 command shirtcut
 bindsym Mod1+F2 exec i3-input
 
-
-
 # Navigate across workspaces
 bindsym Control+Mod1+Left workspace prev
-bindsym --whole-window $mod+button2 workspace prev
-#bindsym --whole-window button8 workspace prev
 bindsym Control+Mod1+Right workspace next
-bindsym --whole-window $mod+button1 workspace next
-#bindsym --whole-window button9 workspace next
 bindsym Control+Mod1+Down workspace prev_on_output
 bindsym Control+Mod1+Up workspace next_on_output
-#bindsym $mod+Shift+h bar mode toggle
+bindsym $mod+Shift+h bar mode toggle
 
 # Print screen shortcut
 bindsym Print exec scrot '%Y-%m-%d-%T_$wx$h_scrot.png' -e 'mv $f ~/Pictures/screenshots/'
 
 # Detect connnected display shortcut
-bindsym $mod+F8 exec --no-startup-id /home/dimos/bin/displayDetect.sh
-#bindcode 133 exec --no-startup-id /home/dimos/bin/displayDetect.sh
-#bindcode 235 exec --no-startup-id /home/dimos/bin/displayDetect.sh
+bindcode 235 exec --no-startup-id /home/dimos/bin/displayDetect.sh
 
 # Create a new workspace
 bindsym $mod+n exec --no-startup-id ~/.i3/i3-new-workspace.sh
@@ -218,58 +205,20 @@ bindsym $mod+Shift+n exec --no-startup-id /home/dimos/.i3/i3-move-to-new-workspa
 # Lock + suspend shortcut
 bindsym $mod+Escape exec --no-startup-id ~/.i3/i3-suspend.sh
 
-# Lock + suspend shortcut
-bindsym $mod+Shift+Escape exec --no-startup-id ~/.i3/i3-hibernate.sh
-
 # Start a new browser
 bindsym $mod+g exec --no-startup-id /usr/bin/google-chrome-stable
 
-# Toggle border
-bindsym $mod+b border toggle
+
 
 
 
 #----------------------------------------------------------------------------------------------------------
 # Startup items
 #----------------------------------------------------------------------------------------------------------
-exec --no-startup-id xset r rate 190 70
-exec --no-startup-id xset m 7/6 8
+exec --no-startup-id /usr/bin/unity-settings-daemon
 exec --no-startup-id /usr/bin/nm-applet
 exec --no-startup-id nautilus
-exec --no-startup-id xautolock -time 10 -locker '/home/dimos/.i3/i3-lock.sh'
-
-# Fix the mouse cursor disappearing issue with gnome-settings-daemon
-#exec --no-startup-id gsettings set org.gnome.settings-daemon.plugins.cursor active false
-
-# Set the synclient settings 
-exec --no-startup-id /home/dimos/bin/fixTouchpadXps13.sh
-
-# Dropdown terminal
-exec --no-startup-id terminator -T "DropdownTerminal" --geometry=1860x1000
-for_window [instance="terminator" title="DropdownTerminal"] floating enable
-for_window [instance="terminator" title="DropdownTerminal"] move scratchpad
-bindsym F12 scratchpad show
-
-# SSH keyring agent
-exec --no-startup-id eval $(gnome-keyring-daemon --start)
-exec --no-startup-id export SSH_AUTH_SOCK
-
-
-
-# To obtain information about an X window do
-#  xwininfo -int
-# This will give you te unique ID for this window 
-# Then issue the following command to obtain the actual properties which can be used in the for_window criteria 
-#  xprop -id XXYYZZ
-
-# Settings for look and feel without gnome settgins
-# lxappearance
-# gtk-chtheme
-# qt4-qtconfig
-
-
-#exec --no-startup-id /usr/bin/gnome-settings-daemon
-#exec --no-startup-id /usr/bin/unity-settings-daemon
+exec --no-startup-id ~/.i3/i3-autolock.sh
 
 # Keyaring agent. Obsolete. I have added in ~/.profile the following:
 # export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
@@ -277,7 +226,13 @@ exec --no-startup-id export SSH_AUTH_SOCK
 # wallpaper
 #exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/myBackground.jpg
 #exec --no-startup-id dropbox start
+ 
 
+# Dropdown terminal
+exec --no-startup-id terminator -T "Dropdown Terminal" --geometry=1920x980
+for_window [instance="terminator" title="Dropdown"] floating enable
+for_window [instance="terminator" title="Dropdown"] move scratchpad
+bindsym F12 scratchpad show
 #for_window [instance="terminator" title="Dropdown"] resize grow left 300, resize grow right 300, resize grow down 150, resize grow up 100, move scratchpad;
 #for_window [instance="terminator" title="Dropdown"] scratchpad show; move position 0px 22px, resize shrink height 300px, resize grow width 683px, move scratchpad;
 

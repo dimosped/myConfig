@@ -47,8 +47,6 @@ nnoremap <leader>h <C-w>s<C-w>j
 " Wrap text instead of being on one line
 set lbr
 
-set relativenumber
-
 " Change colorspace
 set t_Co=256
 
@@ -139,60 +137,35 @@ set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 
 
-"" --------------- Vundle ---------------------
-"set nocompatible               " be iMproved
-"filetype off                   " required!
-"set rtp+=~/.vim/bundle/vundle/
-"call vundle#rc()
-"" let Vundle manage Vundle
-"" required! 
-"Bundle 'gmarik/vundle'
-"" My Bundles here:
-""
-"" original repos on github
-"" git repos on your local machine (ie. when working on your own plugin)
-""  Bundle 'file:///Users/gmarik/path/to/plugin'
-"Plugin 'flazz/vim-colorschemes'
-""Plugin 'fholgado/minibufexpl.vim'
-"Plugin 'kien/ctrlp.vim'
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'scrooloose/nerdcommenter'
-"Plugin 'sjl/gundo.vim'
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'MarcWeber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'
-"Plugin 'garbas/vim-snipmate'
-"Plugin 'honza/vim-snippets'
-"Plugin 'majutsushi/tagbar'
-"Plugin 'scrooloose/syntastic'
-"Plugin 'bling/vim-airline'
-""Plugin 'vim-scripts/cscope.vim'
+" --------------- Vundle ---------------------
+set nocompatible               " be iMproved
+filetype off                   " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+" My Bundles here:
+"
+" original repos on github
+" git repos on your local machine (ie. when working on your own plugin)
+"  Bundle 'file:///Users/gmarik/path/to/plugin'
+Plugin 'flazz/vim-colorschemes'
+"Plugin 'fholgado/minibufexpl.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'sjl/gundo.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+"Plugin 'vim-scripts/cscope.vim'
 " ----------------------------------------
-"  Git plug
-" ----------------------------------------
-call plug#begin('~/.vim/plugged')
-Plug 'flazz/vim-colorschemes'
-"Plug 'fholgado/minibufexpl.vim'
-Plug 'kien/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/nerdcommenter'
-Plug 'sjl/gundo.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-"Plug 'vim-scripts/cscope.vim'
-call plug#end()
-
-
-
-
-
 
 
 " Syntastic seetings
@@ -207,16 +180,14 @@ let g:syntastic_auto_loc_list=1
 filetype plugin indent on 
 
 
-set encoding=utf-8
-
-"" Vim-airline tabs
+" Vim-airline tabs
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
-let g:Powerline_symbols = 'fancy'
 
 " Change colorscheme from default to mustang
 color mustang
+
 

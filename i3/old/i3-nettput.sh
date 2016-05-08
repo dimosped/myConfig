@@ -6,10 +6,10 @@ mkdir -p $dirLoc
 path="${dirLoc}/data" #/dev/shm/measure-net-speed"
 
 # grabbing data
-#eth0="/sys/devices/pci0000:00/0000:00:19.0/net/eth0/statistics"
-wlan0="/sys/devices/pci0000:00/0000:00:1c.4/0000:3a:00.0/net/wlan0/statistics"
-#read eth0_rx < "${eth0}/rx_bytes"
-#read eth0_tx < "${eth0}/tx_bytes"
+eth0="/sys/devices/pci0000:00/0000:00:19.0/net/eth0/statistics"
+wlan0="/sys/devices/pci0000:00/0000:00:1c.1/0000:04:00.0/net/wlan0/statistics"
+read eth0_rx < "${eth0}/rx_bytes"
+read eth0_tx < "${eth0}/tx_bytes"
 read wlan0_rx < "${wlan0}/rx_bytes"
 read wlan0_tx < "${wlan0}/tx_bytes"
 
